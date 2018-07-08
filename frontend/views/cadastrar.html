@@ -1,0 +1,74 @@
+<link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-cadastro100">
+            <form name="signupForm" class="login100-form validate-form animate-box" data-animate-effect="fadeInRight">
+
+                <span class="login100-form-title p-b-26">
+						DevLabs
+                </span>
+
+                <div class="wrap-cadast100">
+                    <input type="text" class="input100" name="nome" placeholder="Nome"
+                           ng-model="signup.nome" ng-required="true">
+                    <span class="focus-input100"></span>
+
+                    <div ng-messages="signupForm.nome.$error">
+                        <div class="alert alert-danger" ng-message="required" ng-if="signupForm.nome.$touched">
+                            Qual seu nome?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrap-cadast100">
+                    <input type="email" class="input100" ng-pattern="pattern_email" name="email" placeholder="Email"
+                           ng-model="signup.email" ng-required="true" focus>
+                    <span class="focus-input100"></span>
+
+                    <div ng-messages="signupForm.email.$error">
+                        <div class="alert alert-danger" ng-message="pattern" ng-if="signupForm.email.$dirty">
+                            Seu email é inválido
+                        </div>
+                        <div class="alert alert-danger" ng-message="required" ng-if="signupForm.email.$touched">
+                            O campo é obrigatório
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrap-cadast100">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input type="password" class="input100" name="senha" placeholder="Senha"
+                           ng-model="signup.senha" ng-minlength="6" ng-required="true">
+                    <span class="focus-input100"></span>
+
+                    <div ng-messages="signupForm.senha.$error">
+                        <div class="alert alert-danger" ng-message="required" ng-if="signupForm.senha.$touched">
+                            O campo é obrigatório
+                        </div>
+                        <div class="alert alert-danger" ng-message="minlength" ng-if="signupForm.senha.$touched">
+                            Mínimo de 6 digitos
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Enviar" class="btn btn-primary" ng-click="signUp(signup)"
+                           ng-disabled="signupForm.$invalid">
+                    <input type="submit" value="Limpar" class="btn btn-primary" ng-click="">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="frontend/assets/js/lib/jquery.waypoints.min.js"></script>
+<script src="frontend/assets/js/login.js"></script>
