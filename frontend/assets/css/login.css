@@ -1,32 +1,11 @@
-@font-face {
-    font-family: Poppins-Regular;
-    src: url('fonts/poppins/Poppins-Regular.ttf');
-}
-
-@font-face {
-    font-family: Poppins-Medium;
-    src: url('fonts/poppins/Poppins-Medium.ttf');
-}
-
-@font-face {
-    font-family: Poppins-Bold;
-    src: url('fonts/poppins/Poppins-Bold.ttf');
-}
-
-@font-face {
-    font-family: Poppins-SemiBold;
-    src: url('fonts/poppins/Poppins-SemiBold.ttf');
-}
-
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    font-family: Poppins-Regular, sans-serif;
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
 /*---------------------------------------------*/
@@ -56,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-family: Poppins-Regular;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -149,14 +128,14 @@ textarea:-ms-input-placeholder {
 
 
 .txt1 {
-    font-family: Poppins-Regular;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: #666666;
     line-height: 1.5;
 }
 
 .txt2 {
-    font-family: Poppins-Regular;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: #333333;
     line-height: 1.5;
@@ -255,7 +234,7 @@ table, th, td {
 }
 
 .input100 {
-    font-family: Poppins-Regular;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     color: #555555;
     line-height: 1.2;
@@ -295,11 +274,11 @@ table, th, td {
     background: -webkit-linear-gradient(left, rgba(49, 49, 49, 0.91), #6e6e6e);
     background: -o-linear-gradient(left, #313131, #6e6e6e);
     background: -moz-linear-gradient(left, #313131, #6e6e6e);
-    background: linear-gradient(left, #313131, #b721ff);
+    background: linear-gradient(left, #313131, #6e6e6e);
 }
 
 .focus-input100::after {
-    font-family: Poppins-Regular;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     color: #999999;
     line-height: 1.2;
@@ -379,60 +358,6 @@ table, th, td {
     }
 }
 
-.alert-validate::before {
-    content: attr(data-validate);
-    position: absolute;
-    max-width: 70%;
-    background-color: #fff;
-    border: 1px solid #c80000;
-    border-radius: 2px;
-    padding: 4px 25px 4px 10px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 0px;
-    pointer-events: none;
-
-    font-family: Poppins-Regular;
-    color: #c80000;
-    font-size: 13px;
-    line-height: 1.4;
-    text-align: left;
-
-    visibility: hidden;
-    opacity: 0;
-
-    -webkit-transition: opacity 0.4s;
-    -o-transition: opacity 0.4s;
-    -moz-transition: opacity 0.4s;
-    transition: opacity 0.4s;
-}
-
-.alert-validate::after {
-    content: "\f06a";
-    font-family: FontAwesome;
-    font-size: 16px;
-    color: #c80000;
-
-    display: block;
-    position: absolute;
-    background-color: #fff;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 5px;
-}
-
-.alert-validate:hover:before {
-    visibility: visible;
-    opacity: 1;
-}
 
 @media (max-width: 992px) {
     .alert-validate::before {

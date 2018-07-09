@@ -9,7 +9,7 @@
 
                 <div class="wrap-cadast100">
                     <input type="text" class="input100" name="nome" placeholder="Nome"
-                           ng-pattern="pattern_nome" ng-model="tempUserData.nome" ng-required="true">
+                           ng-pattern="pattern_nome" ng-model="dadosUsuario.nome" ng-required="true">
                     <span class="focus-input100"></span>
 
                     <div ng-messages="cadastroForm.nome.$error">
@@ -24,7 +24,7 @@
 
                 <div class="wrap-cadast100">
                     <input type="email" class="input100" ng-pattern="pattern_email" name="email" placeholder="Email"
-                           ng-model="tempUserData.email" ng-required="true" focus>
+                           ng-model="dadosUsuario.email" ng-required="true" focus>
                     <span class="focus-input100"></span>
 
                     <div ng-messages="cadastroForm.email.$error">
@@ -42,7 +42,7 @@
                         <i class="zmdi zmdi-eye"></i>
                     </span>
                     <input type="password" class="input100" name="senha" placeholder="Senha"
-                           ng-model="tempUserData.senha" ng-minlength="6" ng-required="true">
+                           ng-model="dadosUsuario.senha" ng-minlength="6" ng-required="true">
                     <span class="focus-input100"></span>
 
                     <div ng-messages="cadastroForm.senha.$error">
@@ -63,7 +63,7 @@
 
                 <div class="form-group text-center">
                     <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid"
-                           ng-hide="tempUserData.id" ng-click="adicionaUsuario()">
+                           ng-hide="dadosUsuario.id" ng-click="adicionaUsuario()">
                     <input type="button" value="Limpar" class="btn btn-primary" ng-click="">
                 </div>
 

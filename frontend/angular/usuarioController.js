@@ -1,13 +1,13 @@
 app.controller('usuarioController', function ($scope, $http) {
 
     $scope.buscaRegistro = function () {
-        $http.get('/backend/php/action.php', {
+        $http.get('/backend/php/executa.php', {
             params: {
-                'type': 'view'
+                'type': 'buscar'
             }
         }).success(function (response) {
             if (response.status == 'OK') {
-                $scope.users = response.records;
+                $scope.usuario = response.records;
             }
         });
     };

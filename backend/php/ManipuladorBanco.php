@@ -1,11 +1,11 @@
 <?php
 
-class DB
+class ManipuladorBanco
 {
     private $dbHost = 'localhost';
-    private $dbUsername = 'root';
-    private $dbPassword = 'nheac4257';
-    private $dbName = 'eduardo';
+    private $dbUsuario = 'root';
+    private $dbSenha = 'nheac4257';
+    private $dbNome = 'eduardo';
     public $db;
 
 
@@ -13,22 +13,17 @@ class DB
     {
         if (!isset($this->db)) {
             try {
-                $conn = new PDO("mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName, $this->dbUsername, $this->dbPassword);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $this->db = $conn;
+                $conexao = new PDO("mysql:host=" . $this->dbHost . ";dbname=" . $this->dbNome, $this->dbUsuario, $this->dbSenha);
+                $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db = $conexao;
             } catch (PDOException $e) {
                 die("Falha ao conectar com MySQL: " . $e->getMessage());
             }
         }
     }
 
-    /*
-     * retorna linhas do banco baseado nas @condicoes
-     * @param string name of the tabela
-     * @param array select, where, order_by, limit and return_type condicoes
-     */
 
-    public function getRows($tabela, $condicoes = array())
+    public function getLinhas($tabela, $condicoes = array())
     {
         $sql = 'SELECT ';
         $sql .= array_key_exists("select", $condicoes) ? $condicoes['select'] : '*';
@@ -59,45 +54,42 @@ class DB
         if (array_key_exists("return_type", $condicoes) && $condicoes['return_type'] != 'all') {
             switch ($condicoes['return_type']) {
                 case 'count':
-                    $data = $query->rowCount();
+                    $dados = $query->rowCount();
                     break;
                 case 'single':
-                    $data = $query->fetch(PDO::FETCH_ASSOC);
+                    $dados = $query->fetch(PDO::FETCH_ASSOC);
                     break;
                 default:
-                    $data = '';
+                    $dados = '';
             }
         } else {
             if ($query->rowCount() > 0) {
-                $data = $query->fetchAll(PDO::FETCH_ASSOC);
+                $dados = $query->fetchAll(PDO::FETCH_ASSOC);
             }
         }
-        return !empty($data) ? $data : false;
+        return !empty($dados) ? $dados : false;
     }
 
-    public function insert($tabela, $data)
+    public function inserir($tabela, $dados)
     {
-        if (!empty($data) && is_array($data)) {
-            $columns = '';
-            $values = '';
-            $i = 0;
-            if (!array_key_exists('criado', $data)) {
-                $data['criado'] = date("Y-m-d H:i:s");
+        if (!empty($dados) && is_array($dados)) {
+
+            if (!array_key_exists('criado', $dados)) {
+                $dados['criado'] = date("Y-m-d H:i:s");
             }
 
-
-            $columnString = implode(',', array_keys($data));
-            $valueString = ":" . implode(',:', array_keys($data));
+            $columnString = implode(',', array_keys($dados));
+            $valueString = ":" . implode(',:', array_keys($dados));
             $sql = "INSERT INTO " . $tabela . " (" . $columnString . ") VALUES (" . $valueString . ")";
             $query = $this->db->prepare($sql);
-            foreach ($data as $key => $val) {
+            foreach ($dados as $key => $val) {
                 $val = htmlspecialchars(strip_tags($val));
                 $query->bindValue(':' . $key, $val);
             }
             $insert = $query->execute();
             if ($insert) {
-                $data['id'] = $this->db->lastInsertId();
-                return $data;
+                $dados['id'] = $this->db->lastInsertId();
+                return $dados;
             } else {
                 return false;
             }
@@ -105,5 +97,4 @@ class DB
             return false;
         }
     }
-
 }
