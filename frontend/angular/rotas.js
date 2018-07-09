@@ -17,7 +17,7 @@ app.config(['$routeProvider', '$locationProvider',
             })
             .when('/usuarios', {
                 templateUrl: 'frontend/views/usuarios.html',
-                controller: 'cadastroController',
+                controller: 'usuarioController',
             })
             .otherwise({
                 redirectTo: '/'

@@ -8,17 +8,6 @@ app.controller('cadastroController', function ($scope, $http) {
     $scope.users = [];
     $scope.tempUserData = {};
 
-    $scope.buscaRegistro = function () {
-        $http.get('/backend/php/action.php', {
-            params: {
-                'type': 'view'
-            }
-        }).success(function (response) {
-            if (response.status == 'OK') {
-                $scope.users = response.records;
-            }
-        });
-    };
 
     $scope.saveUser = function (type) {
         var data = $.param({

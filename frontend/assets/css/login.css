@@ -181,7 +181,9 @@ textarea:-ms-input-placeholder {
     padding: 15px;
     background: #f2f2f2;
 }
-
+table, th, td {
+    border: 2px solid black ;
+}
 .wrap-cadastro100 {
     width: 390px;
     background: #fff;
