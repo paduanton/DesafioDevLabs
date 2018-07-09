@@ -166,7 +166,13 @@ textarea:-ms-input-placeholder {
     width: 100%;
     margin: 0 auto;
 }
+#pagina-inicial {
+    margin-top:30px;
+}
 
+.btn-secondary, .btn-dark {
+    color: #fafafa !important;
+}
 .container-login100 {
     width: 100%;
     min-height: 100vh;
