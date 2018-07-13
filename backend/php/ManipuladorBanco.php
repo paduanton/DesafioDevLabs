@@ -1,11 +1,13 @@
 <?php
+include_once ('config.php');
 
 class ManipuladorBanco
 {
-    private $dbHost = 'localhost';
-    private $dbUsuario = 'root';
-    private $dbSenha = 'nheac4257';
-    private $dbNome = 'eduardo';
+
+    private $dbHost = DB_HOST;
+    private $dbUsuario = DB_USUARIO;
+    private $dbSenha = DB_SENHA;
+    private $dbNome = DB_NOME;
     public $db;
 
 
@@ -72,15 +74,17 @@ class ManipuladorBanco
 
     public function inserir($tabela, $dados)
     {
+        date_default_timezone_set('America/Sao_Paulo');
+
         if (!empty($dados) && is_array($dados)) {
 
-            if (!array_key_exists('criado', $dados)) {
-                $dados['criado'] = date("Y-m-d H:i:s");
+            if (!array_key_exists('ultima_alteracao', $dados)) {
+                $dados['ultima_alteracao'] = date("Y-m-d H:i:s");
             }
 
-            $columnString = implode(',', array_keys($dados));
-            $valueString = ":" . implode(',:', array_keys($dados));
-            $sql = "INSERT INTO " . $tabela . " (" . $columnString . ") VALUES (" . $valueString . ")";
+            $StringColuna = implode(',', array_keys($dados));
+            $StringValor = ":" . implode(',:', array_keys($dados));
+            $sql = "INSERT INTO " . $tabela . " (" . $StringColuna . ") VALUES (" . $StringValor . ")";
             $query = $this->db->prepare($sql);
             foreach ($dados as $key => $val) {
                 $val = htmlspecialchars(strip_tags($val));

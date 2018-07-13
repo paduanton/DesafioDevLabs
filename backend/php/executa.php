@@ -1,7 +1,7 @@
 <?php
 include 'ManipuladorBanco.php';
 $banco = new ManipuladorBanco();
-$nomeTabela = 'usuario';
+$nomeTabela = 'tabela1';
 
 if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
     $tipo = $_REQUEST['type'];

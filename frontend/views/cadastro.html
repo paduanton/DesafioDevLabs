@@ -42,7 +42,7 @@
                         <i class="zmdi zmdi-eye"></i>
                     </span>
                     <input type="password" class="input100" name="senha" placeholder="Senha"
-                           ng-model="dadosUsuario.senha" ng-minlength="6" ng-required="true">
+                           ng-model="dadosUsuario.senha" ng-minlength="6" ng-pattern="pattern_senha" ng-required="true">
                     <span class="focus-input100"></span>
 
                     <div ng-messages="cadastroForm.senha.$error">
@@ -52,11 +52,9 @@
                         <div class="alert alert-danger" ng-message="minlength" ng-if="cadastroForm.senha.$touched">
                             Mínimo de 6 digitos
                         </div>
-                        <!--
-                        <div class="text-center alert alert-info">
-                            Senha inválida
+                        <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
+                            A senha deve conter pelo menos uma letra e um número
                         </div>
-                        -->
                     </div>
                 </div>
 
