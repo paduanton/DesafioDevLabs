@@ -1,0 +1,18 @@
+<div class="container" ng-init="buscaRegistroBackup()"  data-animate-effect="fadeInRight">
+    <div class="row">
+        <div class="panel panel-default usuarios-content">
+            <table class="table table-striped">
+                <p class="text-center">Essa tabela gera o mesmo resultado que:
+                    select id, count(id) as quantidade from tabela1_backup group by id;</p>
+                <tr>
+                    <th width="100%">id do usuário</th>
+                    <th width="100%">Quantidade de vezes que alterou algum dado</th>
+                </tr>
+                <tr ng-repeat="(key, value) in teste | groupBy:'id'"> <!-- | orderBy:'-ultima_alteracao' -->
+                    <td>{{key}}</td>
+                    <td>{{value.length}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

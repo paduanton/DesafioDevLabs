@@ -1,5 +1,5 @@
 <?php
-include_once ('config.php');
+include_once('config.php');
 
 class ManipuladorBanco
 {
@@ -23,7 +23,6 @@ class ManipuladorBanco
             }
         }
     }
-
 
     public function getLinhas($tabela, $condicoes = array())
     {

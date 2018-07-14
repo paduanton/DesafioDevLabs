@@ -33,13 +33,25 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                     senha: response.dados.senha,
                     ultima_alteracao: response.dados.ultima_alteracao
                 });
-                    
+
                 $scope.cadastroForm.$setPristine();
                 $scope.dadosUsuario = {};
-                $('.formdData').slideUp();
-                $scope.messageSuccess(response.msg);
+
+                /*
+                $scope.success = true;
+                $scope.error = false;
+                */
+                $scope.messageSuccess = response.msg;
+                var element = angular.element('#modal-cadastro');
+                element.modal('show');
             } else {
-                $scope.messageError(response.msg);
+                /*
+                $scope.success = false;
+                $scope.error = true;
+                */
+                $scope.messageError = response.msg;
+                var element = angular.element('#modal-cadastro');
+                element.modal('show');
             }
         });
     };
@@ -49,20 +61,4 @@ app.controller('cadastroController', function ($scope, $http, md5) {
         $scope.salvarUsuario('adicionar');
     };
 
-
-    $scope.messageSuccess = function (msg) {
-        $('.alert-success > p').html(msg);
-        $('.alert-success').show();
-        $('.alert-success').delay(5000).slideUp(function () {
-            $('.alert-success > p').html('');
-        });
-    };
-
-    $scope.messageError = function (msg) {
-        $('.alert-danger > p').html(msg);
-        $('.alert-danger').show();
-        $('.alert-danger').delay(5000).slideUp(function () {
-            $('.alert-danger > p').html('');
-        });
-    };
 });

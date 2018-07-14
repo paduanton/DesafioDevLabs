@@ -6,13 +6,24 @@ $nomeTabela = 'tabela1';
 if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
     $tipo = $_REQUEST['type'];
     switch ($tipo) {
-        case "buscar":
-            $records = $banco->getLinhas($nomeTabela);
-            if ($records) {
-                $dados['records'] = $banco->getLinhas($nomeTabela);
+        case "testar":
+            $registros = $banco->getLinhas('tabela1_backup');
+            if ($registros) {
+                $dados['registros'] = $banco->getLinhas('tabela1_backup');
                 $dados['status'] = 'OK';
             } else {
-                $dados['records'] = array();
+                $dados['registros'] = array();
+                $dados['status'] = 'ERR';
+            }
+            echo json_encode($dados);
+            break;
+        case "buscar":
+            $registros = $banco->getLinhas($nomeTabela);
+            if ($registros) {
+                $dados['registros'] = $banco->getLinhas($nomeTabela);
+                $dados['status'] = 'OK';
+            } else {
+                $dados['registros'] = array();
                 $dados['status'] = 'ERR';
             }
             echo json_encode($dados);

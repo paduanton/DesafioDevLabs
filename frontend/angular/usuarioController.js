@@ -7,7 +7,7 @@ app.controller('usuarioController', function ($scope, $http) {
             }
         }).success(function (response) {
             if (response.status == 'OK') {
-                $scope.usuario = response.records;
+                $scope.usuario = response.registros;
             }
         });
     };

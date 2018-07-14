@@ -1,1 +1,1 @@
-var app = angular.module('appDesafioDevLabs', ['ngMessages', 'ngRoute', 'angular-md5']);
+var app = angular.module('appDesafioDevLabs', ['ngMessages', 'ngRoute', 'angular-md5','angular.filter']);

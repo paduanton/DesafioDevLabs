@@ -66,8 +66,34 @@
                 </div>
 
             </form>
-            <div class="alert alert-danger none"><p></p></div>
-            <div class="alert alert-success none"><p></p></div>
+            <!--
+            <div class="alert alert-success alert-dismissible" ng-show="success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{messageSuccess}}
+            </div>
+            <div class="alert alert-danger alert-dismissible" ng-show="error">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{messageError}}
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+<div class="modal animate-box" data-animate-effect="fadeInBottom" tabindex="-1" role="dialog" id="modal-cadastro">
+    <div class="modal-dialog" role="document"> <!-- modal-dialog-centered -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Resposta do sistema</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>{{messageSuccess}} {{messageError}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
         </div>
     </div>
 </div>
