@@ -1,7 +1,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-cadastro100 animate-box" data-animate-effect="fadeInRight">
-            <form name="cadastroForm" class="login100-form validate-form">
+            <form name="cadastroForm" ng-submit="adicionaUsuario()" class="login100-form validate-form">
 
                 <span class="login100-form-title p-b-26">
 						Desafio DevLabs
@@ -24,7 +24,7 @@
 
                 <div class="wrap-cadast100">
                     <input type="email" class="input100" ng-pattern="pattern_email" name="email" placeholder="Email"
-                           ng-model="dadosUsuario.email" ng-required="true" focus>
+                           ng-model="dadosUsuario.email" ng-required="true">
                     <span class="focus-input100"></span>
 
                     <div ng-messages="cadastroForm.email.$error">

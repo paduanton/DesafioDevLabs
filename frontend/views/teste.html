@@ -1,18 +1,30 @@
-<div class="container" ng-init="buscaRegistroBackup()"  data-animate-effect="fadeInRight">
-    <div class="row">
-        <div class="panel panel-default usuarios-content">
-            <table class="table table-striped">
-                <p class="text-center">Essa tabela gera o mesmo resultado que:
-                    select id, count(id) as quantidade from tabela1_backup group by id;</p>
-                <tr>
-                    <th width="100%">id do usuário</th>
-                    <th width="100%">Quantidade de vezes que alterou algum dado</th>
-                </tr>
-                <tr ng-repeat="(key, value) in teste | groupBy:'id'"> <!-- | orderBy:'-ultima_alteracao' -->
-                    <td>{{key}}</td>
-                    <td>{{value.length}}</td>
-                </tr>
-            </table>
-        </div>
+<div class="container" ng-init="buscaRegistroBackup()">
+    <div class="jumbotron">
+        <h1 class="display-4">Contador de ocorrências iguais agrupado por id da tabela1_backup</h1>
+        <hr class="my-4">
+        <p class="lead">Essa tabela gera o mesmo resultado que:
+            select id, count(id) as quantidade from tabela1_backup group by id;</p>
+    </div>
+    <br>
+    <div class="table-responsive">
+        <div class="header">Ocorrências tabela1_backup</div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <td>
+                    ID do usuário
+                </td>
+                <td>
+                    Quantidade de vezes que alterou algum dado
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, value) in teste | groupBy:'id'"> <!-- | orderBy:'-ultima_alteracao' -->
+                <td>{{key}}</td>
+                <td>{{value.length}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>

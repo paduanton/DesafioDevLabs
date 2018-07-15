@@ -12,4 +12,8 @@ app.controller('usuarioController', function ($scope, $http) {
         });
     };
 
+    $scope.tipoDeOrdem = ''; // define o tipo de classificação padrão
+    $scope.ordemReversa = false;  // define a ordem de classificação padrão
+    $scope.buscarUsuario = '';     // define o termo padrão de pesquisa / filtro
+
 });

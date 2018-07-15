@@ -126,7 +126,6 @@ textarea:-ms-input-placeholder {
     color: #adadad;
 }
 
-
 .txt1 {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -145,13 +144,11 @@ textarea:-ms-input-placeholder {
     width: 100%;
     margin: 0 auto;
 }
-#pagina-inicial {
-    margin-top:30px;
-}
 
 .btn-secondary, .btn-dark {
     color: #fafafa !important;
 }
+
 .container-login100 {
     width: 100%;
     min-height: 100vh;
@@ -166,9 +163,33 @@ textarea:-ms-input-placeholder {
     padding: 15px;
     background: #f2f2f2;
 }
+
 table, th, td {
-    border: 2px solid black ;
+    border: 2px solid orangered !important;
 }
+
+.distancia-navbar {
+    padding-top: 60px;
+}
+
+.header {
+    background-color: #327a81;
+    color: white;
+    font-size: 1.5em;
+    padding: 1rem;
+    text-align: center;
+}
+
+.table-responsive {
+    border: 1px solid #327a81;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron {
+    margin-bottom: 0
+}
+
 .wrap-cadastro100 {
     width: 390px;
     background: #fff;
@@ -345,7 +366,6 @@ table, th, td {
     cursor: not-allowed;
 }
 
-
 @media (max-width: 576px) {
     .wrap-login100 {
         padding: 77px 15px 33px 15px;
@@ -357,7 +377,6 @@ table, th, td {
         padding: 77px 15px 33px 15px;
     }
 }
-
 
 @media (max-width: 992px) {
     .alert-validate::before {
@@ -377,7 +396,6 @@ table, th, td {
 .p-b-48 {
     padding-bottom: 48px;
 }
-
 
 .alert {
     font-size: small;

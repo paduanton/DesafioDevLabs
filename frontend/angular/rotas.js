@@ -1,7 +1,7 @@
 app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
 
-        $locationProvider.html5Mode({
+        $locationProvider.html5Mode({ // remover #! da url junto com regra do .htaccess e tag base na index
             enabled: true,
             requireBase: true // indica se precisa ou não da tag base na index
         });

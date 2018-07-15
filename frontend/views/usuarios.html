@@ -1,28 +1,75 @@
-<div class="container" ng-init="buscaRegistro()"  data-animate-effect="fadeInRight">
-    <div class="row">
-        <div class="panel panel-default usuarios-content">
-            <table class="table table-striped">
-                <tr>
-                    <th width="5%">#</th>
-                    <th width="20%">Nome</th>
-                    <th width="30%">Email</th>
-                    <th width="20%">Senha</th>
-                    <th width="16%">Cadastrado em</th>
-                    <th width="8%"></th>
-                </tr>
-                <tr ng-repeat="usuario in usuario"> <!-- | orderBy:'-ultima_alteracao' -->
-                    <td>{{$index + 1}}</td>
-                    <td>{{usuario.nome}}</td>
-                    <td>{{usuario.email}}</td>
-                    <td>{{usuario.senha}}</td>
-                    <td>{{usuario.ultima_alteracao}}</td>
-                    <td>
-                    </td>
-                </tr>
-            </table>
+<div class="container" ng-init="buscaRegistro()">
+    <div class="jumbotron">
+        <h1 class="display-4">Lista de Todos Usuários Cadastrados</h1>
+        <hr class="my-4">
+        <p class="lead">Clique no nome das categorias ou digite para filtrar</p>
+    </div>
+    <br>
+    <div class="alert alert-warning">
+        <p>Tipo de Ordem: {{tipoDeOrdem}}</p>
+        <p>Ordem Reversa: {{ordemReversa}}</p>
+        <p>Query de Pesquisa: {{buscarUsuario}}</p>
+    </div>
+    <form class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-search"></i></div>
+            </div>
+            <input type="text" class="form-control" placeholder="Pesquisar" ng-model="buscarUsuario" focus>
         </div>
+    </form>
+    <div class="table-responsive">
+        <div class="header">Dados tabela1</div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <td>
+                    <a href="#" ng-click="tipoDeOrdem = 'id'; ordemReversa = !ordemReversa">
+                        #
+                        <span ng-show="tipoDeOrdem == 'id' && !ordemReversa" class="fa fa-caret-down"></span>
+                        <span ng-show="tipoDeOrdem == 'id' && ordemReversa" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="tipoDeOrdem = 'nome'; ordemReversa = !ordemReversa">
+                        Nome
+                        <span ng-show="tipoDeOrdem == 'nome' && !ordemReversa" class="fa fa-caret-down"></span>
+                        <span ng-show="tipoDeOrdem == 'nome' && ordemReversa" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="tipoDeOrdem = 'email'; ordemReversa = !ordemReversa">
+                        Email
+                        <span ng-show="tipoDeOrdem == 'email' && !ordemReversa" class="fa fa-caret-down"></span>
+                        <span ng-show="tipoDeOrdem == 'email' && ordemReversa" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="tipoDeOrdem = 'senha'; ordemReversa = !ordemReversa">
+                        Senha
+                        <span ng-show="tipoDeOrdem == 'senha' && !ordemReversa" class="fa fa-caret-down"></span>
+                        <span ng-show="tipoDeOrdem == 'senha' && ordemReversa" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="tipoDeOrdem = 'ultima_alteracao'; ordemReversa = !ordemReversa">
+                        Ultima Alteração
+                        <span ng-show="tipoDeOrdem == 'ultima_alteracao' && !ordemReversa"
+                              class="fa fa-caret-down"></span>
+                        <span ng-show="tipoDeOrdem == 'ultima_alteracao' && ordemReversa" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="usuario in usuario| orderBy:tipoDeOrdem:ordemReversa | filter:buscarUsuario">
+                <td>{{usuario.id}}</td> <!-- {{$index + 1}} -->
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.senha}}</td>
+                <td>{{usuario.ultima_alteracao}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-
-<script src="frontend/assets/js/lib/jquery.waypoints.min.js"></script>
-<script src="frontend/assets/js/login.js"></script>

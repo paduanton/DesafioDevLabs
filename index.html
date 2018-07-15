@@ -17,6 +17,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css"
           rel="stylesheet">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
 
     <link rel="stylesheet" href="frontend/assets/css/lib/animate.css">
 
@@ -24,9 +25,31 @@
 </head>
 
 <body ng-cloak>
-
-<div ng-view></div>
-
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" ng-href="/">DevLabs</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" ng-href="/">Página Inicial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="/cadastro">Cadastrar Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="/lista/usuarios">Listar Todos Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="/teste">Teste</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="distancia-navbar" ng-view></div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -49,5 +72,5 @@
 <script src="frontend/angular/usuarioController.js"></script>
 <script src="frontend/angular/cadastroController.js"></script>
 <script src="frontend/angular/testeController.js"></script>
+<script src="frontend/angular/diretivas.js"></script>
 </html>
-

@@ -7,7 +7,7 @@ app.controller('testeController', function ($scope, $http) {
             }
         }).success(function (response) {
             $scope.teste = response.registros;
-            console.log($scope.teste)
+            console.log($scope.teste); // mostrar formato do array no console na view /teste
         });
     };
 });
