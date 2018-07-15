@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="appDesafioDevLabs">
-
 <head>
     <base href="/"/>
     <meta charset="UTF-8">
@@ -17,14 +16,13 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css"
           rel="stylesheet">
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
 
     <link rel="stylesheet" href="frontend/assets/css/lib/animate.css">
 
     <link rel="stylesheet" type="text/css" href="frontend/assets/css/login.css">
 </head>
-
-<body ng-cloak>
+<body ng-cloak ng-controller="inicioController">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" ng-href="/">DevLabs</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -34,6 +32,14 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav">
+            <li class="nav-item">
+                <a target="_blank" href="" class="nav-link" ng-click="linkFunc(versaophp)">
+                    Versão PHP
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="/tecnologias">Tecnologias Usadas</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" ng-href="/">Página Inicial</a>
             </li>
@@ -49,7 +55,8 @@
         </ul>
     </div>
 </nav>
-<div class="distancia-navbar" ng-view></div>
+<div ng-view></div>
+<ir-para-o-topo></ir-para-o-topo>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -61,6 +68,7 @@
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-messages.min.js"></script>
@@ -69,8 +77,9 @@
 
 <script src="frontend/angular/modulo.js"></script>
 <script src="frontend/angular/rotas.js"></script>
-<script src="frontend/angular/usuarioController.js"></script>
-<script src="frontend/angular/cadastroController.js"></script>
-<script src="frontend/angular/testeController.js"></script>
+<script src="frontend/angular/controllers/usuarioController.js"></script>
+<script src="frontend/angular/controllers/cadastroController.js"></script>
+<script src="frontend/angular/controllers/testeController.js"></script>
+<script src="frontend/angular/controllers/inicioController.js"></script>
 <script src="frontend/angular/diretivas.js"></script>
 </html>

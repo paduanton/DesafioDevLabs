@@ -9,6 +9,7 @@ app.config(['$routeProvider', '$locationProvider',
         $routeProvider
             .when('/', {
                 templateUrl: 'frontend/views/inicio.html',
+                controller: 'inicioController',
             })
             .when('/cadastro', {
                 templateUrl: 'frontend/views/cadastro.html',
