@@ -42,7 +42,7 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                 $scope.error = false;
                 ng-show="success"
                 */
-                $scope.messageSuccess = response.msg;
+                $scope.menssagemSuccesso = response.msg;
                 var element = angular.element('#modal-cadastro');
                 element.modal('show');
                 $scope.mudaCor = true;
@@ -53,7 +53,7 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                 $scope.error = true;
                 (ng-show="error")
                 */
-                $scope.messageError = response.msg;
+                $scope.menssagemErro = response.msg;
                 var element = angular.element('#modal-cadastro');
                 element.modal('show');
             }

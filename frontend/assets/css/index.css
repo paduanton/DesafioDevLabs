@@ -1,6 +1,9 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng.ng-cloak {
     display: none !important;
 }
+.invalid-feedback {
+    display: block !important;
+}
 
 * {
     margin: 0px;
@@ -217,14 +220,14 @@ td a:hover {
     color: #333333;
     line-height: 1.2;
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
 }
 
 .wrap-cadast100 {
     width: 100%;
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin-bottom: 14px;
+    margin-top: 14px;
 }
 
 .input100 {

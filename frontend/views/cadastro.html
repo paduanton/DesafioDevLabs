@@ -9,28 +9,26 @@
                 <input type="text" class="input100" name="nome" placeholder="Nome"
                        ng-pattern="pattern_nome" ng-model="dadosUsuario.nome" ng-required="true">
                 <span class="focus-input100"></span>
-
-                <div ng-messages="cadastroForm.nome.$error">
-                    <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.nome.$touched">
-                        Qual seu nome?
-                    </div>
-                    <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.nome.$dirty">
-                        Nome inválido
-                    </div>
+            </div>
+            <div ng-messages="cadastroForm.nome.$error">
+                <div class="invalid-feedback" ng-message="required" ng-if="cadastroForm.nome.$touched">
+                    Qual seu nome?
+                </div>
+                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.nome.$dirty">
+                    Nome inválido
                 </div>
             </div>
             <div class="wrap-cadast100">
                 <input type="email" class="input100" ng-pattern="pattern_email" name="email" placeholder="Email"
                        ng-model="dadosUsuario.email" ng-required="true">
                 <span class="focus-input100"></span>
-
-                <div ng-messages="cadastroForm.email.$error">
-                    <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.email.$dirty">
-                        Seu email é inválido
-                    </div>
-                    <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.email.$touched">
-                        O campo é obrigatório
-                    </div>
+            </div>
+            <div ng-messages="cadastroForm.email.$error">
+                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.email.$dirty">
+                    Seu email é inválido
+                </div>
+                <div class="invalid-feedback" ng-message="required" ng-if="cadastroForm.email.$touched">
+                    O campo é obrigatório
                 </div>
             </div>
             <div class="wrap-cadast100">
@@ -40,20 +38,21 @@
                 <input type="password" class="input100" name="senha" placeholder="Senha"
                        ng-model="dadosUsuario.senha" ng-minlength="6" ng-pattern="pattern_senha" ng-required="true">
                 <span class="focus-input100"></span>
+            </div>
 
-                <div ng-messages="cadastroForm.senha.$error">
-                    <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.senha.$touched">
-                        O campo é obrigatório
-                    </div>
-                    <div class="alert alert-danger" ng-message="minlength" ng-if="cadastroForm.senha.$touched">
-                        Mínimo de 6 digitos
-                    </div>
-                    <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
-                        A senha deve conter pelo menos uma letra e um número
-                    </div>
+            <div ng-messages="cadastroForm.senha.$error">
+                <div class="invalid-feedback" ng-message="required" ng-if="cadastroForm.senha.$touched">
+                    O campo é obrigatório
+                </div>
+                <div class="invalid-feedback" ng-message="minlength" ng-if="cadastroForm.senha.$touched">
+                    Mínimo de 6 digitos
+                </div>
+                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
+                    A senha deve conter pelo menos uma letra e um número
                 </div>
             </div>
             <div class="form-group text-center">
+                <br>
                 <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid"
                        ng-hide="dadosUsuario.id" ng-click="adicionaUsuario()">
                 <input type="button" value="Limpar" class="btn btn-primary" ng-click="">
@@ -71,7 +70,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <p>{{messageSuccess}} {{messageError}}</p>
+                <p>{{menssagemSuccesso}} {{menssagemErro}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button"
