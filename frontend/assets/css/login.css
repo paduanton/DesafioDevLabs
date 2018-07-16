@@ -26,7 +26,7 @@ nav {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.btn {
+.btn-primary, .btn-info {
     background-color: #08bebf;
 }
 
@@ -36,6 +36,14 @@ nav {
 
 .img-fluid {
     margin-bottom: 5px;
+}
+
+.btn-outline-success {
+    margin: 0 auto;
+}
+
+.btn-outline-danger {
+    margin: 0 auto;
 }
 
 input {
@@ -153,6 +161,7 @@ td a:hover {
     background-color: white;
     border-radius: 10px;
     box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .jumbotron {
@@ -161,6 +170,20 @@ td a:hover {
     color: white;
     background-color: #5F3CA1;
     border-bottom: 5px solid #FAC600;
+}
+
+.jumbotron code {
+    color: #fff;
+}
+
+#logo-modal {
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    margin-top: -25px; /* This needs to be half of the height */
+    margin-left: -25px;
+    width: 42px;
+    height: 31px;
 }
 
 .wrap-cadastro100 {

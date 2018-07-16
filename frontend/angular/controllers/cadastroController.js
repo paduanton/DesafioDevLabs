@@ -40,14 +40,18 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                 /*
                 $scope.success = true;
                 $scope.error = false;
+                ng-show="success"
                 */
                 $scope.messageSuccess = response.msg;
                 var element = angular.element('#modal-cadastro');
                 element.modal('show');
+                $scope.mudaCor = true;
             } else {
+                $scope.mudaCor = false;
                 /*
                 $scope.success = false;
                 $scope.error = true;
+                (ng-show="error")
                 */
                 $scope.messageError = response.msg;
                 var element = angular.element('#modal-cadastro');

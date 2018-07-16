@@ -3,7 +3,7 @@
         <li class="list-group-item">Tipo de Ordem: {{tipoDeOrdem}}</li>
         <li class="list-group-item">Ordem Reversa: {{ordemReversa}}</li>
         <li class="list-group-item">Query de Pesquisa: {{buscarUsuario}}</li>
-        <li class="list-group-item">Clique no nome das categorias ou digite para filtrar </li>
+        <li class="list-group-item">Clique no nome das categorias ou digite para filtrar</li>
     </ul>
     <form class="form-group">
         <div class="input-group">
@@ -49,15 +49,14 @@
                 <td>
                     <a href="#" ng-click="tipoDeOrdem = 'ultima_alteracao'; ordemReversa = !ordemReversa">
                         Última Alteração
-                        <span ng-show="tipoDeOrdem == 'ultima_alteracao' && !ordemReversa"
-                              class="fa fa-caret-down"></span>
+                        <span ng-show="tipoDeOrdem == 'ultima_alteracao' && !ordemReversa" class="fa fa-caret-down"></span>
                         <span ng-show="tipoDeOrdem == 'ultima_alteracao' && ordemReversa" class="fa fa-caret-up"></span>
                     </a>
                 </td>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="usuario in usuario| orderBy:tipoDeOrdem:ordemReversa | filter:buscarUsuario">
+            <tr ng-repeat="usuario in usuario | orderBy:tipoDeOrdem:ordemReversa | filter:buscarUsuario">
                 <td>{{usuario.id}}</td> <!-- {{$index + 1}} -->
                 <td>{{usuario.nome}}</td>
                 <td>{{usuario.email}}</td>
