@@ -1,0 +1,206 @@
+<div class="jumbotron text-center" xmlns="http://www.w3.org/1999/html">
+    <h1>Desafio de Programação DevLabs</h1>
+    <a target="_blank" href="" ng-click="linkFunc(KingHost)" ><img class="img-fluid" src="/frontend/assets/img/Logotipo-KingHost-Alternativa.png"></a>
+    <p>Página inicial de uma pequena aplicação feita para o Desafio DevLabs</p>
+</div>
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Questão 1</h5>
+        <div class="card-body">
+            <h5 class="card-title">Fazer o arquivo select.php funcionar com PDO.</h5>
+            <p class="card-text">Acesse /desafio/select.php ou clique no link abaixo</p>
+            <a target="_blank" class="btn btn-info" href="" ng-click="linkFunc(select)">
+                Testar select.php
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 2</h5>
+        <div class="card-body">
+            <h5 class="card-title">Criar uma página com um formulário que insira dados na tabela1 e informar o link de
+                acesso</h5>
+            <p class="card-text">Acesse: /cadastro</p>
+            <a target="_blank" ng-href="/cadastro" class="btn btn-info">Ou clique aqui</a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 3</h5>
+        <div class="card-body">
+            <h5 class="card-title">Sempre que algum registro for alterado na tabela1 ele deve ser inserido
+                previamente na tabela1_backup. Esse processo deve ser feito no banco de dados. Descrever como
+                a tarefa foi realizada.
+            </h5>
+            <p class="card-text">Primeiro removi primary key da tabela1_backup para poder inserir mais de um registro
+                com mesmo id. De início pensei em criar duas triggers. Uma trigger que depois que fosse inserido dados
+                na tabela1, então seria inserido os mesmos dados na tabela1_backup.
+            </p>
+            <p class="card-text">E a segunda trigger que antes de feita ser uma alteração na tabela1, o campo
+                ultima_alteracao da tabela1_backup seria alterado para a data atual. Segue exemplo abaixo:
+            </p>
+            <pre class="pre-scrollable">
+                <code>
+                    DELIMITER $$
+                    CREATE TRIGGER inserir_copia AFTER INSERT ON tabela1
+                      FOR EACH ROW
+                      BEGIN
+                        INSERT INTO tabela1_backup (id, nome, email, senha, ultima_alteracao)
+                        VALUES (NEW.id, NEW.nome, NEW.email, NEW.senha, NEW.ultima_alteracao);
+                      END$$
+                    DELIMITER ;
+
+                    DELIMITER $$
+                    CREATE TRIGGER inserir_backup BEFORE UPDATE ON tabela1
+                      FOR EACH ROW
+                      BEGIN
+                        UPDATE tabela1_backup SET ultima_alteracao = NOW() WHERE id = old.id;
+                      END$$
+                    DELIMITER ;
+                </code>
+            </pre>
+            <p class="card-text">
+                Porém dessa forma, ficaria registrado somente a data do último update e os dados
+                da tabela1_backup seriam sempre os mesmos da primeira inserção. Então fiz da seguinte forma:
+            </p>
+            <pre>
+                <code>
+                    DELIMITER $$
+                    CREATE TRIGGER inserir_backup2 BEFORE UPDATE ON tabela1
+                      FOR EACH ROW
+                      BEGIN
+                        INSERT INTO tabela1_backup (id, nome, email, senha, ultima_alteracao)
+                        VALUES (OLD.id, OLD.nome, OLD.email, OLD.senha, NOW());
+                      END$$
+                    DELIMITER ;
+                </code>
+            </pre>
+            <p class="card-text">
+                Dessa forma cada alteração feita na tabela1 é registrada na tabela1_backup, pois é inserido um novo
+                registro com os dados antigos junto com a data exata em que foram alterados.
+                <span>No link abaixo consta todas alterações que fiz (e cogitei fazer) no banco para resolver as 6 primeiras questões do desafio</span>
+            </p>
+            <br>
+            <a target="_blank" class="btn btn-info" href="" ng-click="linkFunc(mudancas)">
+                Clique aqui
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 4</h5>
+        <div class="card-body">
+            <h5 class="card-title">Criar uma view chamada 'teste' que contenha um contador de ocorrências iguais e
+                seja agrupado por id da tabela1_backup. Informar como a view foi criada.</h5>
+            <p class="card-text">Para criar esta view usei o módulo angular-filter juntamente com a diretiva ng-repeat
+                do AngularJS. Segue trecho do html abaixo:</p>
+            <pre>
+                <code>
+                    &lttr ng-repeat="(key, value) in teste | groupBy:'id'"&gt
+                        &lttd&gt { { key } }&lt/td&gt
+                        &lttd&gt { { value.length } }&lt/td&gt
+                    &lt/tr&gt
+                </code>
+            </pre>
+            <p>O <var>ng-repeat</var> funciona de forma similar a uma estrutura de repetição, pois irá repetir até
+                mostrar todos os dados do array <var>teste</var> que está definido no controller.
+            </p>
+            <p>O parâmento <var>key</var> é o index da expressão, ou seja, funciona como um identificador e o atributo
+                <var>value</var> é o array em si. Este array <var>teste</var> contém todos os dados do da
+                tabela1_backup, então usei o atributo <var>groupBy</var> para definir o index como sendo o id que está
+                contido no array e usando a expressão <var>value.length</var> para contar quantos ids iguais contém no
+                array. No fim das contas, essa estrutura gera o mesmo resulto que o código SQL abaixo:
+            </p>
+            <pre>
+                <code>
+                    SELECT id, count(id) as Quantidade FROM tabela1_backup GROUP BY id;
+                </code>
+            </pre>
+            <a target="_blank" ng-href="/teste" class="btn btn-info">View teste</a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 5</h5>
+        <div class="card-body">
+            <h5 class="card-title">Criar uma procedure que retorne todos os dados da tabela 'tabela1'.
+                Informar como a procedure foi criada.
+            </h5>
+            <pre>
+                <code>
+                    DELIMITER $$
+                    CREATE PROCEDURE `retornaTabela`(IN nomeTabela VARCHAR(40))
+                      BEGIN
+                        SET @t1 = CONCAT('SELECT * FROM ', nomeTabela);
+                        PREPARE stmt3 FROM @t1;
+                        EXECUTE stmt3;
+                        DEALLOCATE PREPARE stmt3;
+                      END $$
+                    DELIMITER ;
+                    CALL retornaTabela('tabela1');
+                </code>
+            </pre>
+            <p class="card-text">O MySQL possui algumas expresões "pré-prontas" e neste caso usei os <var>Prepared
+                Statements</var> para retornar todos os dados da tabela. Segue abaixo as definições de alguns atributos
+                que usei:</var>
+            </p>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">PREPARE: prepara uma declaração para execução
+                    (funciona de forma parecida com uma declaração de váriavel)
+                </li>
+                <li class="list-group-item list-group-item-action">EXECUTE: executa uma instrução preparada</li>
+                <li class="list-group-item list-group-item-action">DEALLOCATE PREPARE: libera uma declaração
+                    preparada
+                </li>
+            </ul>
+            <p class="card-text">
+                Nesse casso, recebi como parâmetro da procedure o nome da tabela. Inicializei a variável
+                <var>@t1</var> com a uma consulta para mostrar todos os dados da tabela X. Com o <var>PREPARE</var>
+                defini a variável <var>@t1</var> como um statement (<var>@stmt3</var>). Usei o <var>EXECUTE</var> para
+                executar o statement (consulta da tabela X) e então usei <var>DEALLOCATE PREPARE</var> para dar um
+                "release" no statement <var>@stmt3</var>.
+            </p>
+        </div>
+
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 6</h5>
+        <div class="card-body">
+            <h5 class="card-title">Desenvolver uma página em php que chame os dados da tabela1. Esses dados devem ser
+                exibidos em uma table com border, independente do número de registros, sem paginação.
+            </h5>
+            <p class="card-text">Acesse: /lista/usuarios</p>
+            <a target="_blank" ng-href="/lista/usuarios" class="btn btn-info">Ou clique aqui</a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 7</h5>
+        <div class="card-body">
+            <h5 class="card-title">A query abaixo não está funcionando pois leva mais de 300 segundos. Otimizar as
+                tabelas para que esta consulta leve menos de 10 segundos. Informar as alterações feitas. ATENÇÃO: A
+                query não deve ser alterada.
+            </h5>
+            <pre>
+                <code>
+                    SELECT SQL_NO_CACHE COUNT(*), `nome_func`, `sobrenome_func`, SUM(`salario`) AS soma_salario FROM
+                    `funcionarios`, `salarios` WHERE funcionarios.nr_func = salarios.nr_func GROUP BY nome_func,sobrenome_func
+                    ORDER BY soma_salario DESC;
+                </code>
+            </pre>
+            <p class="card-text">Acesse: /desafio/mudancas_questao7.sql para ver as mudancas que fiz para otimizar as
+                tabelas</p>
+            <a target="_blank" class="btn btn-info" href="" ng-click="linkFunc(mudancas_questao7)">
+                Ou clique aqui
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Questão 8</h5>
+        <div class="card-body">
+            <h5 class="card-title">Aplique um dos frameworks abaixo nas páginas criadas nas questões 2 e 6 para que a
+                apresentação delas fique mais agradável.
+                <br>Bootstrap - http://getbootstrap.com/
+                <br>Skeleton - http://getskeleton.com/
+            </h5>
+            <p class="card-text">Apliquei o framework Bootstrap em todas as views. Então a aplicação encontra-se
+                TOTALMENTE responsiva.
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container" ng-init="buscaRegistroBackup()">
+    <div class="jumbotron">
+        <h1 class="display-4">Contador de ocorrências iguais agrupado por ID da tabela1_backup</h1>
+        <hr class="my-4">
+        <p class="lead">Essa tabela gera o mesmo resultado que:</p>
+        <code>SELECT id, COUNT(id) AS Quantidade FROM tabela1_backup GROUP BY id;</code>
+    </div>
+    <br>
+    <div class="table-responsive">
+        <div class="header">Ocorrências tabela1_backup</div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <td>
+                    ID do usuário
+                </td>
+                <td>
+                    Quantidade de vezes que algum dado foi alterado
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, value) in teste | groupBy:'id'"> <!-- | orderBy:'-ultima_alteracao' -->
+                <td>{{key}}</td>
+                <td>{{value.length}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
