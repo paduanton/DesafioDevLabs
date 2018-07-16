@@ -7,7 +7,7 @@ app.directive('focus', function () {
 app.directive('irParaOTopo', function () {
     return {
         restrict: 'EA',
-        template: '<a id="scrolltag" title="Clique aqui para ir ao topo" class="scrollup">Scroll</a>',
+        template: '<a id="scrolltag" title="clique aqui para ir ao topo" class="scrollup"></a>',
         link: function (scope, $elm) {
             var scrollObject = {};
             var scrollElement = document.getElementById('scrolltag');

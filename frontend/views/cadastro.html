@@ -1,82 +1,81 @@
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-cadastro100 animate-box" data-animate-effect="fadeInRight">
-            <form name="cadastroForm" ng-submit="adicionaUsuario()" class="login100-form validate-form">
+<div class="container-login100">
+    <div class="wrap-cadastro100 animate-box" data-animate-effect="fadeInRight">
+        <form name="cadastroForm" ng-submit="adicionaUsuario()" class="login100-form validate-form">
 
                 <span class="login100-form-title p-b-26">
-						Desafio DevLabs
+						Cadastro DevLabs
+                    <img src="/frontend/assets/img/logo-padrao.png" width="40" height="34" class="img-fluid" alt="logo">
                 </span>
 
-                <div class="wrap-cadast100">
-                    <input type="text" class="input100" name="nome" placeholder="Nome"
-                           ng-pattern="pattern_nome" ng-model="dadosUsuario.nome" ng-required="true">
-                    <span class="focus-input100"></span>
+            <div class="wrap-cadast100">
+                <input type="text" class="input100" name="nome" placeholder="Nome"
+                       ng-pattern="pattern_nome" ng-model="dadosUsuario.nome" ng-required="true">
+                <span class="focus-input100"></span>
 
-                    <div ng-messages="cadastroForm.nome.$error">
-                        <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.nome.$touched">
-                            Qual seu nome?
-                        </div>
-                        <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.nome.$dirty">
-                            Nome inválido
-                        </div>
+                <div ng-messages="cadastroForm.nome.$error">
+                    <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.nome.$touched">
+                        Qual seu nome?
+                    </div>
+                    <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.nome.$dirty">
+                        Nome inválido
                     </div>
                 </div>
+            </div>
 
-                <div class="wrap-cadast100">
-                    <input type="email" class="input100" ng-pattern="pattern_email" name="email" placeholder="Email"
-                           ng-model="dadosUsuario.email" ng-required="true">
-                    <span class="focus-input100"></span>
+            <div class="wrap-cadast100">
+                <input type="email" class="input100" ng-pattern="pattern_email" name="email" placeholder="Email"
+                       ng-model="dadosUsuario.email" ng-required="true">
+                <span class="focus-input100"></span>
 
-                    <div ng-messages="cadastroForm.email.$error">
-                        <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.email.$dirty">
-                            Seu email é inválido
-                        </div>
-                        <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.email.$touched">
-                            O campo é obrigatório
-                        </div>
+                <div ng-messages="cadastroForm.email.$error">
+                    <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.email.$dirty">
+                        Seu email é inválido
+                    </div>
+                    <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.email.$touched">
+                        O campo é obrigatório
                     </div>
                 </div>
+            </div>
 
-                <div class="wrap-cadast100">
+            <div class="wrap-cadast100">
                     <span class="btn-show-pass">
                         <i class="zmdi zmdi-eye"></i>
                     </span>
-                    <input type="password" class="input100" name="senha" placeholder="Senha"
-                           ng-model="dadosUsuario.senha" ng-minlength="6" ng-pattern="pattern_senha" ng-required="true">
-                    <span class="focus-input100"></span>
+                <input type="password" class="input100" name="senha" placeholder="Senha"
+                       ng-model="dadosUsuario.senha" ng-minlength="6" ng-pattern="pattern_senha" ng-required="true">
+                <span class="focus-input100"></span>
 
-                    <div ng-messages="cadastroForm.senha.$error">
-                        <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.senha.$touched">
-                            O campo é obrigatório
-                        </div>
-                        <div class="alert alert-danger" ng-message="minlength" ng-if="cadastroForm.senha.$touched">
-                            Mínimo de 6 digitos
-                        </div>
-                        <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
-                            A senha deve conter pelo menos uma letra e um número
-                        </div>
+                <div ng-messages="cadastroForm.senha.$error">
+                    <div class="alert alert-danger" ng-message="required" ng-if="cadastroForm.senha.$touched">
+                        O campo é obrigatório
+                    </div>
+                    <div class="alert alert-danger" ng-message="minlength" ng-if="cadastroForm.senha.$touched">
+                        Mínimo de 6 digitos
+                    </div>
+                    <div class="alert alert-danger" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
+                        A senha deve conter pelo menos uma letra e um número
                     </div>
                 </div>
-
-
-                <div class="form-group text-center">
-                    <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid"
-                           ng-hide="dadosUsuario.id" ng-click="adicionaUsuario()">
-                    <input type="button" value="Limpar" class="btn btn-primary" ng-click="">
-                </div>
-
-            </form>
-            <!--
-            <div class="alert alert-success alert-dismissible" ng-show="success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{messageSuccess}}
             </div>
-            <div class="alert alert-danger alert-dismissible" ng-show="error">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{messageError}}
+
+
+            <div class="form-group text-center">
+                <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid"
+                       ng-hide="dadosUsuario.id" ng-click="adicionaUsuario()">
+                <input type="button" value="Limpar" class="btn btn-primary" ng-click="">
             </div>
-            -->
+
+        </form>
+        <!--
+        <div class="alert alert-success alert-dismissible" ng-show="success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{messageSuccess}}
         </div>
+        <div class="alert alert-danger alert-dismissible" ng-show="error">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{messageError}}
+        </div>
+        -->
     </div>
 </div>
 <div class="modal animate-box" data-animate-effect="fadeInBottom" tabindex="-1" role="dialog" id="modal-cadastro">

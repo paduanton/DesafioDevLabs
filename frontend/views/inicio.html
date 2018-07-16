@@ -1,8 +1,8 @@
 <div class="jumbotron text-center" xmlns="http://www.w3.org/1999/html">
-    <h1>Desafio de Programação DevLabs KING</h1>
+    <h1>Desafio de Programação DevLabs</h1>
+    <img class="img-fluid" src="/frontend/assets/img/Logotipo-KingHost-Alternativa.png">
     <p>Página inicial de uma pequena aplicação feita para o Desafio DevLabs</p>
 </div>
-<nav class="navbar bg-dark"></nav>
 <div class="container">
     <div class="card">
         <h5 class="card-header">Questão 1</h5>
@@ -90,7 +90,7 @@
             <h5 class="card-title">Criar uma view chamada 'teste' que contenha um contador de ocorrências iguais e
                 seja agrupado por id da tabela1_backup. Informar como a view foi criada.</h5>
             <p class="card-text">Para criar esta view usei o módulo angular-filter juntamente com a diretiva ng-repeat
-                do Angularjs. Segue trecho do html abaixo:</p>
+                do AngularJS. Segue trecho do html abaixo:</p>
             <pre>
                 <code>
                     &lttr ng-repeat="(key, value) in teste | groupBy:'id'"&gt
@@ -102,7 +102,7 @@
             <p>O <var>ng-repeat</var> funciona de forma similar a uma estrutura de repetição, pois irá repetir até
                 mostrar todos os dados do array <var>teste</var> que está definido no controller.
             </p>
-            <p>O parâmento <var>key</var> é o index da expressão, ou seja, funciona como um identificado e o atributo
+            <p>O parâmento <var>key</var> é o index da expressão, ou seja, funciona como um identificador e o atributo
                 <var>value</var> é o array em si. Este array <var>teste</var> contém todos os dados do da
                 tabela1_backup, então usei o atributo <var>groupBy</var> para definir o index como sendo o id que está
                 contido no array e usando a expressão <var>value.length</var> para contar quantos ids iguais contém no
@@ -140,16 +140,18 @@
                 Statements</var> para retornar todos os dados da tabela. Segue abaixo as definições de alguns atributos
                 que usei:</var>
             </p>
-            <div class="list-group">
-                <a class="list-group-item list-group-item-action">PREPARE: prepara uma declaração para execução
-                    (funciona de forma parecida como um declaração de váriavel)</a>
-                <a class="list-group-item list-group-item-action">EXECUTE: executa uma instrução preparada</a>
-                <a class="list-group-item list-group-item-action">DEALLOCATE PREPARE: libera uma declaração
-                    preparada</a>
-            </div>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">PREPARE: prepara uma declaração para execução
+                    (funciona de forma parecida com uma declaração de váriavel)
+                </li>
+                <li class="list-group-item list-group-item-action">EXECUTE: executa uma instrução preparada</li>
+                <li class="list-group-item list-group-item-action">DEALLOCATE PREPARE: libera uma declaração
+                    preparada
+                </li>
+            </ul>
             <p class="card-text">
-                Nesse casso, recebi como parâmetro da procedure o nome de uma tabela. Inicializei a variável
-                <var>@t1</var> com a uma consulta para mostrar todos os dados de uma tabela X. Com o <var>PREPARE</var>
+                Nesse casso, recebi como parâmetro da procedure o nome da tabela. Inicializei a variável
+                <var>@t1</var> com a uma consulta para mostrar todos os dados da tabela X. Com o <var>PREPARE</var>
                 defini a variável <var>@t1</var> como um statement (<var>@stmt3</var>). Usei o <var>EXECUTE</var> para
                 executar o statement (consulta da tabela X) e então usei <var>DEALLOCATE PREPARE</var> para dar um
                 "release" no statement <var>@stmt3</var>.
@@ -197,9 +199,8 @@
                 <br>Skeleton - http://getskeleton.com/
             </h5>
             <p class="card-text">Apliquei o framework Bootstrap em todas as views. Então a aplicação encontra-se
-                TOTALMENTE responsiva.</p>
-            <a target="_blank" ng-href="/tecnologias" class="btn btn-info">Clique Aqui para Ver as Tecnologias
-                Usadas</a>
+                TOTALMENTE responsiva.
+            </p>
         </div>
     </div>
 </div>
