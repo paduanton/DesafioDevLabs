@@ -164,6 +164,10 @@ td a:hover {
     margin-bottom: 20px;
 }
 
+.dropdown-menu a {
+    color: #989898 !important;
+}
+
 .jumbotron {
     margin-bottom: 0;
     border-radius: 0;
