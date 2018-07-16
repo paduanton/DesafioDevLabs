@@ -39,7 +39,7 @@ if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
                 if ($insert) {
                     $dados['dados'] = $insert;
                     $dados['status'] = 'OK';
-                    $dados['msg'] = 'Os dados do usuário foram adicionados com sucesso.';
+                    $dados['msg'] = 'DADOS CADASTRADOS COM SUCESSO';
                 } else {
                     $dados['status'] = 'ERR';
                     $dados['msg'] = 'Algum problema ocorreu, por favor tente novamente.';
