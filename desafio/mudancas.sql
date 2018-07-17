@@ -1,66 +1,14 @@
 use DesafioDevLabs;
 
-DROP TABLE IF EXISTS `tabela1`;
-/*!40101 SET @saved_cs_client = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tabela1` (
-  `id`               smallint(6)  NOT NULL AUTO_INCREMENT,
-  `nome`             varchar(100) NOT NULL,
-  `email`            varchar(130) NOT NULL,
-  `senha`            varchar(80)  NOT NULL,
-  `ultima_alteracao` timestamp,
-  PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+-- mudancas feitas
 
-ALTER TABLE tabela1
-  CHANGE `ultima_alteracao` `ultima_alteracao` datetime not null;
+ALTER TABLE tabela1 CHANGE `ultima_alteracao` `ultima_alteracao` TIMESTAMP NOT NULL;
 
-DELIMITER $$
-CREATE TRIGGER inserir_senha_md5
-  BEFORE INSERT
-  ON tabela1
-  FOR EACH ROW
-  BEGIN
-    SET NEW.senha = md5(new.senha);
-  END$$
-DELIMITER ;
+ALTER TABLE tabela1_backup CHANGE `id` `id` SMALLINT(6) NOT NULL; -- removendo auto_increment
 
+ALTER TABLE tabela1_backup DROP PRIMARY KEY;
 
-ALTER TABLE tabela1_backup
-  CHANGE `ultima_alteracao` `ultima_alteracao` datetime not null;
-
-ALTER TABLE tabela1_backup
-  CHANGE `id` `id` smallint(6) NOT NULL;
-
-ALTER TABLE tabela1_backup
-  DROP PRIMARY KEY;
-
-DELIMITER $$
-CREATE TRIGGER inserir_copia
-  AFTER INSERT
-  ON tabela1
-  FOR EACH ROW
-  BEGIN
-    INSERT INTO tabela1_backup (id, nome, email, senha, ultima_alteracao)
-    VALUES (NEW.id, NEW.nome, NEW.email, NEW.senha, NEW.ultima_alteracao);
-  END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER inserir_backup
-  BEFORE UPDATE
-  ON tabela1
-  FOR EACH ROW
-  BEGIN
-    UPDATE tabela1_backup
-    SET ultima_alteracao = NOW()
-    where id = old.id;
-  END$$
-DELIMITER ;
-
--- ou
+ALTER TABLE tabela1_backup CHANGE `ultima_alteracao` `ultima_alteracao` TIMESTAMP NOT NULL;
 
 DELIMITER $$
 CREATE TRIGGER inserir_backup2
@@ -73,7 +21,6 @@ CREATE TRIGGER inserir_backup2
   END$$
 DELIMITER ;
 
-
 DELIMITER $$
 CREATE PROCEDURE `retornaTabela`(IN nomeTabela VARCHAR(40))
   BEGIN
@@ -84,4 +31,40 @@ CREATE PROCEDURE `retornaTabela`(IN nomeTabela VARCHAR(40))
   END $$
 DELIMITER ;
 
-CALL retornaTabela('tabela1');
+-- *************************************************************************************
+
+-- mudancas que cogitei fazer
+
+DELIMITER $$ -- alternativa funcional
+CREATE TRIGGER inserir_senha_md5
+  BEFORE INSERT
+  ON tabela1
+  FOR EACH ROW
+  BEGIN
+    SET NEW.senha = md5(new.senha);
+  END$$
+DELIMITER ;
+
+-- nao sao viaveis, pois nao sao funcionais
+DELIMITER $$
+CREATE TRIGGER inserir_copia
+  AFTER INSERT
+  ON tabela1
+  FOR EACH ROW
+  BEGIN
+    INSERT INTO tabela1_backup (id, nome, email, senha, ultima_alteracao)
+    VALUES (NEW.id, NEW.nome, NEW.email, NEW.senha, NEW.ultima_alteracao);
+  END$$
+DELIMITER ;
+
+DELIMITER $$ -- depende do inserir_copia para funcionar
+CREATE TRIGGER inserir_backup
+  BEFORE UPDATE
+  ON tabela1
+  FOR EACH ROW
+  BEGIN
+    UPDATE tabela1_backup
+    SET ultima_alteracao = NOW()
+    where id = old.id;
+  END$$
+DELIMITER ;

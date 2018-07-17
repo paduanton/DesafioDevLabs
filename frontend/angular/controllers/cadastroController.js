@@ -10,7 +10,9 @@ app.controller('cadastroController', function ($scope, $http, md5) {
     $scope.dadosUsuario = {};
 
 
-    $scope.salvarUsuario = function (type) {
+    $scope.salvarUsuario = function () {
+        var type = 'adicionar';
+
         var senha_md5 = this;
         senha_md5.hash = md5.createHash($scope.dadosUsuario.senha);
         $scope.dadosUsuario.senha = senha_md5.hash;
@@ -34,15 +36,14 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                     ultima_alteracao: response.dados.ultima_alteracao
                 });
 
-                $scope.cadastroForm.$setPristine();
-                $scope.dadosUsuario = {};
+                $scope.reset();
 
                 /*
                 $scope.success = true;
                 $scope.error = false;
                 ng-show="success"
                 */
-                $scope.menssagemSuccesso = response.msg;
+                $scope.feedbackUsuario = response.msg;
                 var element = angular.element('#modal-cadastro');
                 element.modal('show');
                 $scope.mudaCor = true;
@@ -53,16 +54,16 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                 $scope.error = true;
                 (ng-show="error")
                 */
-                $scope.menssagemErro = response.msg;
+                $scope.feedbackUsuario = response.msg;
                 var element = angular.element('#modal-cadastro');
                 element.modal('show');
             }
         });
     };
 
-
-    $scope.adicionaUsuario = function () {
-        $scope.salvarUsuario('adicionar');
+    $scope.reset = function () {
+        $scope.dadosUsuario = {};
+        $scope.cadastroForm.$setUntouched();
+        $scope.cadastroForm.$setPristine();
     };
-
 });

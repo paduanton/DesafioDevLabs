@@ -1,15 +1,16 @@
 <?php
 include 'ManipuladorBanco.php';
 $banco = new ManipuladorBanco();
-$nomeTabela = 'tabela1';
+$nomeTabela = '';
 
 if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
     $tipo = $_REQUEST['type'];
     switch ($tipo) {
         case "testar":
-            $registros = $banco->getLinhas('tabela1_backup');
+            $nomeTabela = 'tabela1_backup';
+            $registros = $banco->getLinhas($nomeTabela);
             if ($registros) {
-                $dados['registros'] = $banco->getLinhas('tabela1_backup');
+                $dados['registros'] = $banco->getLinhas($nomeTabela);
                 $dados['status'] = 'OK';
             } else {
                 $dados['registros'] = array();
@@ -18,6 +19,7 @@ if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
             echo json_encode($dados);
             break;
         case "buscar":
+            $nomeTabela ='tabela1';
             $registros = $banco->getLinhas($nomeTabela);
             if ($registros) {
                 $dados['registros'] = $banco->getLinhas($nomeTabela);
@@ -29,6 +31,7 @@ if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
             echo json_encode($dados);
             break;
         case "adicionar":
+            $nomeTabela ='tabela1';
             if (!empty($_POST['dados'])) {
                 $dadosUsuario = array(
                     'nome' => $_POST['dados']['nome'],

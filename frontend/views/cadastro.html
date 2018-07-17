@@ -1,9 +1,9 @@
 <div class="container-login100">
     <div class="wrap-cadastro100 animate-box" data-animate-effect="fadeInRight">
-        <form name="cadastroForm" ng-submit="adicionaUsuario()" class="login100-form validate-form">
+        <form name = "cadastroForm" ng-submit="salvarUsuario()" class="login100-form validate-form">
             <span class="login100-form-title">
                 Cadastro DevLabs
-                <img src="/frontend/assets/img/logo-padrao.png" width="40" height="34" class="img-fluid" alt="logo">
+                <img src="/frontend/assets/img/Logo-KingHost.png" width="40" height="34" class="img-fluid" alt="logo">
             </span>
             <div class="wrap-cadast100">
                 <input type="text" class="input100" name="nome" placeholder="Nome"
@@ -53,9 +53,8 @@
             </div>
             <div class="form-group text-center">
                 <br>
-                <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid"
-                       ng-hide="dadosUsuario.id" ng-click="adicionaUsuario()">
-                <input type="button" value="Limpar" class="btn btn-primary" ng-click="">
+                <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid">
+                <input type="reset" value="Limpar" class="btn btn-primary" ng-click="reset()">
             </div>
         </form>
     </div>
@@ -64,13 +63,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="/frontend/assets/img/logo-padrao.png" id="logo-modal" class="img-fluid" alt="logo">
+                <img src="/frontend/assets/img/Logo-KingHost.png" id="logo-modal" class="img-fluid" alt="logo">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body text-center">
-                <p>{{menssagemSuccesso}} {{menssagemErro}}</p>
+                <p>{{feedbackUsuario}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button"

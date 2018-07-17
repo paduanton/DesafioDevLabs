@@ -1,6 +1,7 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng.ng-cloak {
     display: none !important;
 }
+
 .invalid-feedback {
     display: block !important;
 }
@@ -53,6 +54,10 @@ nav {
     margin: 0 auto;
 }
 
+.btn:focus, .btn.focus, .btn:active, .form-control:focus {
+    box-shadow: none !important;
+}
+
 input {
     outline: none;
     border: none;
@@ -83,7 +88,7 @@ p > span {
 }
 
 .scrollup {
-    background: white;
+    background: #d8d8d8;
     border-radius: 50px;
     bottom: 50px;
     content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/VisualEditor_-_Icon_-_Collapse.svg/1024px-VisualEditor_-_Icon_-_Collapse.svg.png");
@@ -329,6 +334,7 @@ td a:hover {
 }
 
 .btn-primary {
+    border: none;
     width: 80px;
     border-radius: 15px;
 }

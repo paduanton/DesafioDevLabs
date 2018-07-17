@@ -14,16 +14,17 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="frontend/assets/css/lib/animate.css">
 
     <link rel="stylesheet" type="text/css" href="frontend/assets/css/index.css">
 </head>
-<body ng-controller="inicioController" ng-cloak>
+<body ng-cloak>
 <nav class="navbar fixed-top navbar-expand-lg ">
     <a class="navbar-brand" ng-href="/">
-        <img src="/frontend/assets/img/logo-padrao.png" width="27" height="21" class="img-fluid" alt="logo">
+        <img src="/frontend/assets/img/Logo-KingHost.png" width="27" height="21" class="img-fluid" alt="logo">
         <span>DEVLABS</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -32,14 +33,19 @@
     </button>
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="mr-auto"></ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav"  ng-controller="inicioController">
+            <li class="nav-item">
+                <a class="nav-link" ng-href="/">Página Inicial</a>
+            </li>
+            <li class="nav-item">
+                <a target="_blank" href="" class="nav-link" ng-click="linkFunc(select)">
+                    select.php
+                </a>
+            </li>
             <li class="nav-item">
                 <a target="_blank" href="" class="nav-link" ng-click="linkFunc(versaophp)">
                     Versão PHP
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" ng-href="/">Página Inicial</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
