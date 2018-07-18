@@ -8,6 +8,8 @@ app.controller('inicioController', function ($scope, $window) {
 
     $scope.versaophp = '/desafio/phpinfo.php';
 
+    $scope.repo = 'https://github.com/paduanton/DesafioDevLabs'
+
     $scope.KingHost = 'https://king.host';
 
     $scope.linkFunc = function (url) { // função para redirecionar links que estão fora da rota

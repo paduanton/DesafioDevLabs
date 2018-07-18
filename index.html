@@ -24,7 +24,7 @@
 <body ng-cloak>
 <nav class="navbar fixed-top navbar-expand-lg ">
     <a class="navbar-brand" ng-href="/">
-        <img src="/frontend/assets/img/Logo-KingHost.png" width="27" height="21" class="img-fluid" alt="logo">
+        <img src="/frontend/assets/img/Logo-KingHost.png" id="logo-kinghost" width="27" height="21" class="img-fluid" alt="logo">
         <span>DEVLABS</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -34,6 +34,11 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="mr-auto"></ul>
         <ul class="navbar-nav"  ng-controller="inicioController">
+            <li class="nav-item">
+                <a target="_blank" href="" class="nav-link" ng-click="linkFunc(repo)"data-toggle="tooltip" data-placement="left" title="link do repositório">
+                    <img id="logo-github" class="img-fluid" src="frontend/assets/img/logo-github.png">
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" ng-href="/">Página Inicial</a>
             </li>

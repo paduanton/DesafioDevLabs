@@ -44,10 +44,10 @@
                 <div class="invalid-feedback" ng-message="required" ng-if="cadastroForm.senha.$touched">
                     O campo é obrigatório
                 </div>
-                <div class="invalid-feedback" ng-message="minlength" ng-if="cadastroForm.senha.$touched">
+                <div class="invalid-feedback" ng-message="minlength" ng-if="cadastroForm.senha.$dirty">
                     Mínimo de 6 digitos
                 </div>
-                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
+                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.senha.$touched">
                     A senha deve conter pelo menos uma letra e um número
                 </div>
             </div>

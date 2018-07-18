@@ -1,14 +1,17 @@
 <div class="jumbotron text-center">
     <h1>Desafio de Programação DevLabs</h1>
-    <a target="_blank" href="" ng-click="linkFunc(KingHost)" ><img class="img-fluid" src="/frontend/assets/img/Logotipo-Alternativo-KingHost.png"></a>
+    <a target="_blank" href="" ng-click="linkFunc(KingHost)">
+        <img class="img-fluid w-75 p-3" src="/frontend/assets/img/Logotipo-Alternativo-KingHost.png">
+    </a>
     <p>Página inicial de uma pequena aplicação feita para o Desafio DevLabs</p>
 </div>
 <div class="container">
+    <h5 class="card-header text-center">...</h5>
     <div class="card">
         <h5 class="card-header">Questão 1</h5>
         <div class="card-body">
             <h5 class="card-title">Fazer o arquivo select.php funcionar com PDO.</h5>
-            <p class="card-text">Acesse /desafio/select.php ou clique no link abaixo</p>
+            <p>Acesse /desafio/select.php ou clique no link abaixo</p>
             <a target="_blank" class="btn btn-info" href="" ng-click="linkFunc(select)">
                 Testar select.php
             </a>
@@ -19,7 +22,7 @@
         <div class="card-body">
             <h5 class="card-title">Criar uma página com um formulário que insira dados na tabela1 e informar o link de
                 acesso</h5>
-            <p class="card-text">Acesse: /cadastro</p>
+            <p>Acesse: /cadastro</p>
             <a target="_blank" ng-href="/cadastro" class="btn btn-info">Ou clique aqui</a>
         </div>
     </div>
@@ -30,11 +33,11 @@
                 previamente na tabela1_backup. Esse processo deve ser feito no banco de dados. Descrever como
                 a tarefa foi realizada.
             </h5>
-            <p class="card-text">Primeiro removi primary key da tabela1_backup para poder inserir mais de um registro
+            <p>Primeiro removi primary key da tabela1_backup para poder inserir mais de um registro
                 com mesmo id. De início pensei em criar duas triggers. Uma trigger que depois que fosse inserido dados
                 na tabela1, então seria inserido os mesmos dados na tabela1_backup.
             </p>
-            <p class="card-text">E a segunda trigger que antes de feita ser uma alteração na tabela1, o campo
+            <p>E a segunda trigger que antes de feita ser uma alteração na tabela1, o campo
                 ultima_alteracao da tabela1_backup seria alterado para a data atual. Segue exemplo abaixo:
             </p>
             <pre class="pre-scrollable">
@@ -57,23 +60,23 @@
                     DELIMITER ;
                 </code>
             </pre>
-            <p class="card-text">
+            <p>
                 Porém dessa forma, ficaria registrado somente a data do último update e os dados
                 da tabela1_backup seriam sempre os mesmos da primeira inserção. Então fiz da seguinte forma:
             </p>
             <pre>
                 <code>
                     DELIMITER $$
-                    CREATE TRIGGER inserir_backup2 BEFORE UPDATE ON tabela1
+                    CREATE TRIGGER inserir_backup BEFORE UPDATE ON tabela1
                       FOR EACH ROW
                       BEGIN
-                        INSERT INTO tabela1_backup (id, nome, email, senha, ultima_alteracao)
-                        VALUES (OLD.id, OLD.nome, OLD.email, OLD.senha, NOW());
+                        INSERT INTO tabela1_backup (id, nome, email, senha)
+                        VALUES (OLD.id, OLD.nome, OLD.email, OLD.senha);
                       END$$
                     DELIMITER ;
                 </code>
             </pre>
-            <p class="card-text">
+            <p>
                 Dessa forma cada alteração feita na tabela1 é registrada na tabela1_backup, pois é inserido um novo
                 registro com os dados antigos junto com a data exata em que foram alterados.
                 <span>No link abaixo consta todas alterações que fiz (e cogitei fazer) no banco para resolver as 6 primeiras questões do desafio</span>
@@ -89,7 +92,7 @@
         <div class="card-body">
             <h5 class="card-title">Criar uma view chamada 'teste' que contenha um contador de ocorrências iguais e
                 seja agrupado por id da tabela1_backup. Informar como a view foi criada.</h5>
-            <p class="card-text">Para criar esta view usei o módulo angular-filter juntamente com a diretiva ng-repeat
+            <p>Para criar esta view usei o módulo angular-filter juntamente com a diretiva ng-repeat
                 do AngularJS. Segue trecho do html abaixo:</p>
             <pre>
                 <code>
@@ -99,6 +102,9 @@
                     &lt/tr&gt
                 </code>
             </pre>
+            <p>No controller dessa view faço uma chamada Ajax, onde pego todos os dados da tabela através do php e
+                retorno um array em formato json para o controller. Este array contém o nome de cada coluna e seu
+                respectivo valor.</p>
             <p>O <var>ng-repeat</var> funciona de forma similar a uma estrutura de repetição, pois irá repetir até
                 mostrar todos os dados do array <var>teste</var> que está definido no controller.
             </p>
@@ -133,10 +139,9 @@
                         DEALLOCATE PREPARE stmt3;
                       END $$
                     DELIMITER ;
-                    CALL retornaTabela('tabela1');
                 </code>
             </pre>
-            <p class="card-text">O MySQL possui algumas expresões "pré-prontas" e neste caso usei os <var>Prepared
+            <p>O MySQL possui algumas expresões "pré-prontas" e neste caso usei os <var>Prepared
                 Statements</var> para retornar todos os dados da tabela. Segue abaixo as definições de alguns atributos
                 que usei:</var>
             </p>
@@ -149,7 +154,7 @@
                     preparada
                 </li>
             </ul>
-            <p class="card-text">
+            <p>
                 Nesse casso, recebi como parâmetro da procedure o nome da tabela. Inicializei a variável
                 <var>@t1</var> com a uma consulta para mostrar todos os dados da tabela X. Com o <var>PREPARE</var>
                 defini a variável <var>@t1</var> como um statement (<var>@stmt3</var>). Usei o <var>EXECUTE</var> para
@@ -165,7 +170,7 @@
             <h5 class="card-title">Desenvolver uma página em php que chame os dados da tabela1. Esses dados devem ser
                 exibidos em uma table com border, independente do número de registros, sem paginação.
             </h5>
-            <p class="card-text">Acesse: /lista/usuarios</p>
+            <p>Acesse: /lista/usuarios</p>
             <a target="_blank" ng-href="/lista/usuarios" class="btn btn-info">Ou clique aqui</a>
         </div>
     </div>
@@ -183,7 +188,7 @@
                     ORDER BY soma_salario DESC;
                 </code>
             </pre>
-            <p class="card-text">Acesse: /desafio/mudancas_questao7.sql para ver as mudancas que fiz para otimizar as
+            <p>Acesse: /desafio/mudancas_questao7.sql para ver as mudancas que fiz para otimizar as
                 tabelas</p>
             <a target="_blank" class="btn btn-info" href="" ng-click="linkFunc(mudancas_questao7)">
                 Ou clique aqui
@@ -198,7 +203,7 @@
                 <br>Bootstrap - http://getbootstrap.com/
                 <br>Skeleton - http://getskeleton.com/
             </h5>
-            <p class="card-text">Apliquei o framework Bootstrap em todas as views. Então a aplicação encontra-se
+            <p>Apliquei o framework Bootstrap em todas as views. Então a aplicação encontra-se
                 TOTALMENTE responsiva.
             </p>
         </div>

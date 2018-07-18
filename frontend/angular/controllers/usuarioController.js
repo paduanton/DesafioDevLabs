@@ -1,7 +1,7 @@
 app.controller('usuarioController', function ($scope, $http) {
 
     $scope.buscaRegistro = function () {
-        $http.get('/backend/php/executa.php', {
+        $http.get('/backend/php/index.php', {
             params: {
                 'type': 'buscar'
             }

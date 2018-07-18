@@ -26,7 +26,7 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         };
-        $http.post("/backend/php/executa.php", dados, charset).success(function (response) {
+        $http.post("/backend/php/index.php", dados, charset).success(function (response) {
             if (response.status == 'OK') {
                 $scope.usuario.push({
                     id: response.dados.id,
@@ -41,7 +41,7 @@ app.controller('cadastroController', function ($scope, $http, md5) {
                 /*
                 $scope.success = true;
                 $scope.error = false;
-                ng-show="success"
+                (ng-show="success")
                 */
                 $scope.feedbackUsuario = response.msg;
                 var element = angular.element('#modal-cadastro');

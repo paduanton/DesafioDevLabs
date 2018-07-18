@@ -42,8 +42,13 @@ nav {
     border-color: white;
 }
 
-.img-fluid {
+#logo-kinghost {
     margin-bottom: 5px;
+}
+
+#logo-github {
+    width: 32px;
+    height: 31.21px;
 }
 
 .btn-outline-success {
@@ -80,6 +85,9 @@ input::-webkit-input-placeholder {
     font-weight: 600;
 }
 
+h5.card-header {
+    background-color: white;
+}
 p > span {
     font-weight: 600;
     border-radius: 10px;
@@ -114,7 +122,7 @@ ir-para-o-topo:hover {
 }
 
 .visible {
-    opacity: 1;
+
     -webkit-transition: opacity 500ms ease-in;
     -moz-transition: opacity 500ms ease-in;
     -o-transition: opacity 500ms ease-in;
@@ -185,7 +193,6 @@ td a:hover {
     border-radius: 0;
     color: white;
     background-color: #5F3CA1;
-    border-bottom: 5px solid #FAC600;
 }
 
 .jumbotron code {

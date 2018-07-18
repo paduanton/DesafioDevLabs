@@ -74,14 +74,9 @@ class ManipuladorBanco
 
     public function inserir($tabela, $dados)
     {
-        date_default_timezone_set('America/Sao_Paulo');
+
 
         if (!empty($dados) && is_array($dados)) {
-
-            if (!array_key_exists('ultima_alteracao', $dados)) {
-                $dados['ultima_alteracao'] = date("Y-m-d H:i:s");
-            }
-
             $StringColuna = implode(',', array_keys($dados));
             $StringValor = ":" . implode(',:', array_keys($dados));
             $sql = "INSERT INTO " . $tabela . " (" . $StringColuna . ") VALUES (" . $StringValor . ")";
