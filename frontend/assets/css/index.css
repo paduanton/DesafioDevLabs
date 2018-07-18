@@ -88,6 +88,7 @@ input::-webkit-input-placeholder {
 h5.card-header {
     background-color: white;
 }
+
 p > span {
     font-weight: 600;
     border-radius: 10px;
@@ -122,7 +123,6 @@ ir-para-o-topo:hover {
 }
 
 .visible {
-
     -webkit-transition: opacity 500ms ease-in;
     -moz-transition: opacity 500ms ease-in;
     -o-transition: opacity 500ms ease-in;
@@ -187,6 +187,15 @@ td a:hover {
 .dropdown-menu a {
     color: #989898 !important;
 }
+.dropdown-menu a:active{
+    color: #989898;
+    background-color: #efefef;
+}
+
+.dropdown-menu a:hover{
+    background-color: #efefef;
+}
+
 
 .jumbotron {
     margin-bottom: 0;
@@ -272,12 +281,10 @@ td a:hover {
     left: 0;
     width: 0;
     height: 2px;
-
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
-
     background: -webkit-linear-gradient(left, rgba(49, 49, 49, 0.91), #6e6e6e);
     background: -o-linear-gradient(left, #313131, #6e6e6e);
     background: -moz-linear-gradient(left, #313131, #6e6e6e);
@@ -309,15 +316,6 @@ td a:hover {
     width: 100%;
 }
 
-.has-val.input100 + .focus-input100::after {
-    top: -15px;
-}
-
-.has-val.input100 + .focus-input100::before {
-    width: 100%;
-}
-
-/*---------------------------------------------*/
 .btn-show-pass {
     font-size: 15px;
     color: #999999;
@@ -353,12 +351,5 @@ td a:hover {
 @media (max-width: 576px) {
     .wrap-cadastro100 {
         padding: 77px 15px 33px 15px;
-    }
-}
-
-@media (max-width: 992px) {
-    .alert-validate::before {
-        visibility: visible;
-        opacity: 1;
     }
 }
