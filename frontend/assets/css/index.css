@@ -3,7 +3,7 @@
 }
 
 .invalid-feedback {
-    display: block !important;
+    display: block;
 }
 
 * {
@@ -13,17 +13,17 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif !important;
-    padding-top: 56px;
-    background-color: #5F3CA1 !important;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 50px;
+    background-color: #5F3CA1;
 }
 
 a {
-    color: white !important;
+    color: white;
 }
 
 a:hover {
-    color: #efefef !important;
+    color: #efefef;
 }
 
 nav {
@@ -53,10 +53,6 @@ nav {
 
 .btn-outline-success, .btn-outline-danger {
     margin: 0 auto;
-}
-
-.btn:focus, .btn.focus, .btn:active, .form-control:focus {
-    box-shadow: none !important;
 }
 
 input {
@@ -181,16 +177,12 @@ td a:hover {
 }
 
 .dropdown-menu a {
-    color: #989898 !important;
-}
-
-.dropdown-menu a:active {
     color: #989898;
-    background-color: #efefef;
 }
 
-.dropdown-menu a:hover {
-    background-color: #efefef;
+.dropdown-menu a:active, .dropdown-menu a:hover {
+    color: #848484;
+    background-color: #f3f3f3;
 }
 
 .jumbotron {
@@ -227,10 +219,6 @@ td a:hover {
     -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.login100-form {
-    width: 100%;
-}
-
 .login100-form-title {
     display: block;
     font-size: 30px;
@@ -251,7 +239,6 @@ td a:hover {
     font-size: 15px;
     color: #555555;
     line-height: 1.2;
-
     display: block;
     width: 100%;
     height: 45px;
@@ -315,7 +302,6 @@ td a:hover {
 .btn-show-pass {
     font-size: 15px;
     color: #999999;
-
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
