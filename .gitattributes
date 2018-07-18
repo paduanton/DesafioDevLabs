@@ -1,3 +1,3 @@
 frontend/views/* linguist-vendored
 *.js linguist-vendored=false
-*.css linguist-vendored
+animate.css linguist-vendored
