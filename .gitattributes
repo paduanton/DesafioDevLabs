@@ -1,2 +1,1 @@
-frontend/views/* linguist-vendored
-frontend/assets/css/lib/* linguist-vendored
+frontend/views/* frontend/assets/css/lib/* linguist-vendored
