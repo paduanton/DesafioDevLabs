@@ -1,1 +1,2 @@
-frontend/views/* frontend/assets/css/lib/* linguist-vendored
+frontend/views/* linguist-vendored
+animate.css linguist-vendored=true
