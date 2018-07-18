@@ -1,2 +1,3 @@
 frontend/views/* linguist-vendored
-frontend/assets/css/lib/* linguist-vendored
+*.js linguist-vendored=false
+*.css linguist-vendored
