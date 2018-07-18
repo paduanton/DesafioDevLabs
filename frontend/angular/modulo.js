@@ -1,1 +1,0 @@
-var app = angular.module('appDesafioDevLabs', ['ngMessages', 'ngRoute', 'angular-md5','angular.filter']); // ngAnimate?
