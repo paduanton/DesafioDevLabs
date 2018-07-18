@@ -51,11 +51,7 @@ nav {
     height: 31.21px;
 }
 
-.btn-outline-success {
-    margin: 0 auto;
-}
-
-.btn-outline-danger {
+.btn-outline-success, .btn-outline-danger {
     margin: 0 auto;
 }
 
@@ -187,15 +183,15 @@ td a:hover {
 .dropdown-menu a {
     color: #989898 !important;
 }
-.dropdown-menu a:active{
+
+.dropdown-menu a:active {
     color: #989898;
     background-color: #efefef;
 }
 
-.dropdown-menu a:hover{
+.dropdown-menu a:hover {
     background-color: #efefef;
 }
-
 
 .jumbotron {
     margin-bottom: 0;
@@ -212,7 +208,7 @@ td a:hover {
     position: absolute;
     left: 50%;
     top: 18%;
-    margin-top: -25px; /* This needs to be half of the height */
+    margin-top: -25px;
     margin-left: -25px;
     width: 42px;
     height: 31px;
