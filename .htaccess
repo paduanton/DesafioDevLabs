@@ -1,4 +1,8 @@
 RewriteEngine on
+# FORÇA HTTPS
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# IMPLEMENTA PRETTY URLS (REMOVE #! DO ANGULARJS)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]

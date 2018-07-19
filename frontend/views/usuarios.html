@@ -1,4 +1,4 @@
-<div class="container animate-box" data-animate-effect="fadeIn" ng-init="buscaRegistro()">
+<div class="container animate-box" data-animate-effect="fadeIn">
     <ul class="list-group">
         <li class="list-group-item">Tipo de Ordem: {{tipoDeOrdem}}</li>
         <li class="list-group-item">Ordem Reversa: {{ordemReversa}}</li>
@@ -15,7 +15,7 @@
     </form>
     <div class="table-responsive">
         <div class="header">Lista de Todos Usuários Cadastrados (tabela1)</div>
-        <table class="table table-bordered table-hover table-light">
+        <table class="table table-bordered table-hover table-light" ng-init="buscaRegistro()">
             <thead>
             <tr>
                 <td>
