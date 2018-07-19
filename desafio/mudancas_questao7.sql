@@ -2,7 +2,6 @@ ALTER TABLE funcionarios add index idx_01 (nr_func) ;
 
 ALTER TABLE salarios add index idx_01 (nr_func) ;
 
--- dois optimizes nao sao necessarios
 OPTIMIZE TABLE funcionarios;
 
 OPTIMIZE TABLE salarios;

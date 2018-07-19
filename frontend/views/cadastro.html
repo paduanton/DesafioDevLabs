@@ -1,6 +1,6 @@
 <div class="container-login100">
     <div class="wrap-cadastro100 animate-box" data-animate-effect="fadeInUp">
-        <form name="cadastroForm" ng-submit="salvarUsuario()" class="validate-form">
+        <form name="cadastroForm" ng-submit="salvarUsuario()" novalidate class="validate-form">
             <span class="login100-form-title">
                 Cadastro DevLabs
                 <img src="/frontend/assets/img/Logo-KingHost.png" width="40" height="34" class="img-fluid" alt="logo">
@@ -47,13 +47,13 @@
                 <div class="invalid-feedback" ng-message="minlength" ng-if="cadastroForm.senha.$dirty">
                     Mínimo de 6 digitos
                 </div>
-                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.senha.$touched">
+                <div class="invalid-feedback" ng-message="pattern" ng-if="cadastroForm.senha.$dirty">
                     A senha deve conter pelo menos uma letra e um número
                 </div>
             </div>
             <div class="form-group text-center">
                 <br>
-                <input type="submit" value="Enviar" class="btn btn-primary" ng-disabled="cadastroForm.$invalid">
+                <input type="submit" value="Enviar" class="btn btn-primary">
                 <input type="reset" value="Limpar" class="btn btn-primary" ng-click="reset()">
             </div>
         </form>
